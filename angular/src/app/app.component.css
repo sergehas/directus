@@ -1,0 +1,9 @@
+.popover {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    box-shadow: 6px 7px 5px #636262;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #636262;
+}

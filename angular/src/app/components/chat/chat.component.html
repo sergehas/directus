@@ -1,0 +1,25 @@
+<div class="chat">
+    <div class="title-bar">
+        <h2>Chat</h2> <span class="material-symbols-outlined action" (click)="closePopup()">
+            close
+        </span>
+    </div>
+    <div class="messages">
+        <ng-container *ngFor="let message of messages">
+            <div class="message" [ngClass]="{ 'from': message.author === 'bot',
+'to': message.author === 'user' }">
+                {{ message.content }}
+            </div>
+        </ng-container>
+    </div>
+    <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Your message</label>
+    <div class="actions-bar">
+        <input class="message-box" [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" />
+        <button class="send-button" (click)="sendMessage()"><span class="material-symbols-outlined">
+                send
+            </span></button>
+        <ng-template #dialogInfo>
+            <span [className]="'float-right'">Total messages: {{messages.length}}</span>
+        </ng-template>
+    </div>
+</div>
