@@ -16,7 +16,22 @@ Admin credentials for this Directus instance:
 
 1. Clone this repo.
 
-2. Start the docker container.
+1. build the angular demo
+
+   ```shell
+   cd ./angular
+   npm i
+   npm run build
+   ```
+
+   from WSL shell
+
+   ```shell
+   cd ./angular
+   docker build . --tag directusdemo/angular:local
+   ```
+
+1. Start the docker container.
 
    ```shell
    cd directus
@@ -24,8 +39,11 @@ Admin credentials for this Directus instance:
    ```
 
    Your Directus example is now running at <http://127.0.0.1:8055>.
+   Your directus webapp demo is now running a <http://127.0.0.1:4200>.
 
-4. You can login with the admin credentials shown above to explore this Directus example project.
+1. You can login with the admin credentials shown above to explore this Directus example project [see `.env` config file](./.env).
+
+> many elements (among them, what DB to use) can be configure in [`.env` config file](./.env).
 
 ## 🔗 Links
 

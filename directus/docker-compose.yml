@@ -4,21 +4,22 @@ services:
   directus:
     image: directus/directus:9.22.1
     ports:
-      - 8055:8055
+      - 8055:$PORT
     volumes:
       - ./database:/directus/database
-      - ./extensions:/directus/extensions
-      - ./uploads:/directus/uploads
+      - ./extensions:$EXTENSIONS_PATH
+      - ./uploads:$STORAGE_LOCAL_ROOT
     environment:
-      KEY: "0fda9121-269d-44bd-91f2-4ff05be14b4b"
-      SECRET: "86cb4a76-a4c6-4ce7-8181-b0445d95675c"
 
-      DB_CLIENT: "sqlite3"
-      DB_FILENAME: "/directus/database/data.db"
-      #DB_FILENAME: "/directus/database/elb.db"
+      KEY: $KEY
+      SECRET: $SECRET
 
-      ADMIN_EMAIL: "admin@example.com"
-      ADMIN_PASSWORD: "d1r3ctu5"
+      DB_CLIENT: $DB_CLIENT
+      DB_FILENAME: "/directus/database/$DB_FILENAME"
+      CORS_ENABLED: $CORS_ENABLED
+      CORS_ORIGIN: $CORS_ORIGIN
+      ADMIN_EMAIL: $ADMIN_EMAIL
+      ADMIN_PASSWORD: $ADMIN_PASSWORD
 
       CONTENT_SECURITY_POLICY_USE_DEFAULT: false
       CONTENT_SECURITY_POLICY_DIRECTIVES__DEFAULT_SRC: "array:'self'"
@@ -28,7 +29,7 @@ services:
       CONTENT_SECURITY_POLICY_DIRECTIVES__UPGRADE_INSECURE_REQUESTS: "[]"
   
   website:
-    image: directus/website:latest
+    image: directusdemo/angular:local
     ports:
       - 4200:4200
     environment:

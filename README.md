@@ -20,6 +20,10 @@ Other example available in the original github
 
 _[^1]: These additionally uses full read permissions on `articles` & `directus_users` in Public role for simplicity sake._ -->
 
+## Running demo
+
+see [./directus/README.md]
+
 ## 🔗 Links
 
 - ✨ Official Website — [https://directus.io](https://directus.io)
